@@ -1,0 +1,83 @@
+{
+    "name": "My Daily News",
+    "authors": ["Scott's Automated News"],
+    "style": "Vintage",
+    "stories": [
+        {
+            "provider": "forecast",
+            "config": {
+                "lat": 43.42799,
+                "lon": -82.67351
+            }
+        },
+        {
+            "provider": "clean_rss",
+            "config": {
+                "rss_path": "http://feeds.bbci.co.uk/news/rss.xml",
+                "name": "BBC News",
+                "limit": 1
+            }
+        },
+        {
+            "provider": "clean_rss",
+            "config": {
+                "rss_path": "https://feeds.skynews.com/feeds/rss/world.xml",
+                "name": "Sky News",
+                "limit": 2
+            }
+        },
+        {
+            "provider": "clean_rss",
+            "config": {
+                "rss_path": "https://feeds.arstechnica.com/arstechnica/index",
+                "name": "Ars Technica",
+                "limit": 2
+            }
+        },
+        {
+            "provider": "nasa_apod"
+        },
+        {
+            "provider": "word_search",
+            "config": {
+                "grid_size": 15,
+                "num_words": 10
+            }
+        },
+        {
+            "provider": "crossword",
+            "config": {
+                "num_words": 10,
+                "grid_size": 15
+            }
+        },
+        {
+            "provider": "reddit_full",
+            "config": {
+                "subreddit": "openclaw",
+                "limit": 4
+            }
+        },
+        {
+            "provider": "reddit_full",
+            "config": {
+                "subreddit": "todayilearned",
+                "limit": 5
+            }
+        },
+        {
+            "provider": "reddit_full",
+            "config": {
+                "subreddit": "sysadmin",
+                "limit": 5
+            }
+        },
+        {
+            "provider": "reddit_full",
+            "config": {
+                "subreddit": "explainlikeimfive",
+                "limit": 5
+            }
+        }
+    ]
+}

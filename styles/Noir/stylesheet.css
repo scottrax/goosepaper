@@ -1,0 +1,207 @@
+/* Noir — Hard-boiled detective / pulp fiction newspaper
+   Typewriter fonts, high contrast black & white, dramatic,
+   like a prop from a film noir detective's desk */
+
+@page {
+    size: 702pt 936pt;
+    margin: 0.4in 0.3in 0.3in 0.45in;
+    background: #e8e4de;
+}
+
+body {
+    font-family: "Courier Prime", "Courier New", monospace;
+    color: #111;
+    background: #e8e4de;
+}
+
+/* — Masthead — */
+.header {
+    padding: 0.3em 0;
+    height: auto;
+    text-align: center;
+    border-bottom: 5px solid #111;
+    margin-bottom: 0.2em;
+}
+.header > div {
+    display: block;
+    float: none;
+}
+.header h1 {
+    font-family: "Special Elite", monospace;
+    font-weight: 400;
+    font-size: 34pt;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin: 0;
+    line-height: 1.1em;
+    color: #111;
+}
+.header h4 {
+    font-family: "Courier Prime", monospace;
+    font-weight: 400;
+    font-size: 10pt;
+    margin: 0.2em 0 0 0;
+    color: #444;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+.header .ear {
+    float: right;
+    max-width: 45%;
+}
+.left-ear {
+    display: none;
+}
+
+/* — TOC nav — */
+.toc-nav {
+    font-family: "Special Elite", monospace;
+    font-size: 8pt !important;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    border-top: 2px solid #111 !important;
+    border-bottom: 2px solid #111 !important;
+    padding: 0.2em 0 !important;
+    margin-bottom: 0.4em !important;
+    background: #e8e4de;
+}
+.toc-nav a {
+    color: #111 !important;
+    text-decoration: none !important;
+    font-size: 8pt !important;
+}
+.toc-nav span {
+    color: #666 !important;
+}
+
+/* — Banner (weather, above columns) — */
+.banner-section {
+    margin-bottom: 0.4em;
+    padding-bottom: 0.3em;
+    border-bottom: 2px solid #111;
+}
+.banner-section article > h1 {
+    font-size: 12pt;
+    margin: 0;
+}
+.banner-section article > h4.byline {
+    display: none;
+}
+
+/* — Layout — */
+.row {
+    column-count: 2;
+    column-gap: 1.5em;
+    column-rule: 2px solid #111;
+}
+
+/* — Articles — */
+.stories {
+    font-size: 11pt;
+    line-height: 1.4em;
+}
+
+article {
+    text-align: left;
+    line-height: 1.4em;
+    break-inside: auto;
+}
+article.story {
+    margin-bottom: 0.8em;
+    padding-bottom: 0.5em;
+    border-bottom: 2px solid #333;
+}
+
+article > h1 {
+    font-family: "Special Elite", monospace;
+    font-weight: 400;
+    font-size: 17pt;
+    text-indent: 0;
+    margin-bottom: 0.1em;
+    margin-top: 0.15em;
+    line-height: 1.2em;
+    text-align: left;
+    text-transform: uppercase;
+    color: #111;
+}
+article > h1.priority-low {
+    font-family: "Courier Prime", monospace;
+    font-size: 13pt;
+    font-weight: 400;
+    border-bottom: none;
+}
+
+article > h4.byline {
+    font-family: "Courier Prime", monospace;
+    font-size: 9pt;
+    font-weight: 400;
+    font-style: italic;
+    text-indent: 0;
+    color: #444;
+    border-bottom: 1px dashed #999;
+    margin-bottom: 0.3em;
+}
+
+article > h3 {
+    font-family: "Special Elite", monospace;
+    font-weight: 400;
+    font-size: 14pt;
+    text-indent: 0;
+    text-transform: uppercase;
+}
+
+article p {
+    margin: 0 0 0.4em 0;
+}
+
+/* — Images — */
+.stories article.story img {
+    width: 100%;
+    filter: grayscale(100%) contrast(1.2);
+}
+
+figure {
+    border: 2px solid #111;
+    text-indent: 0;
+    width: auto;
+    margin: 0.5em 0;
+}
+figure > span {
+    font-size: 0;
+}
+
+/* — Sidebar — */
+.sidebar {
+    font-size: 10pt;
+}
+
+/* — Section headers — */
+section > h1,
+section > h2,
+section > h3,
+section > h4,
+section > h5 {
+    border-left: 4px solid #111;
+    padding-left: 0.5em;
+    font-family: "Special Elite", monospace;
+}
+
+/* — Ear boxes — */
+.ear article {
+    border: 2px solid #111;
+    padding: 0.5em;
+    margin: 0.3em;
+    font-size: 9pt;
+    background: #ddd8d0;
+}
+.ear article h1 {
+    font-family: "Special Elite", monospace;
+    font-size: 9pt;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+ul, li, ol {
+    margin-left: 0;
+    padding-left: 0.3em;
+}

@@ -1,0 +1,211 @@
+/* Vintage — Aged broadsheet from the early 1900s
+   Warm sepia tones, ornamental rules, antiqued serif type,
+   heavy use of horizontal rules and column dividers */
+
+@page {
+    size: 702pt 936pt;
+    margin: 0.5in 0.35in 0.35in 0.5in;
+    background: #f2e8d5;
+}
+
+body {
+    font-family: "IM Fell English", "Georgia", serif;
+    color: #2b1d0e;
+    background: #f2e8d5;
+}
+
+/* — Masthead — */
+.header {
+    padding: 0.2em 0;
+    height: auto;
+    text-align: center;
+    border-bottom: 6px double #2b1d0e;
+    margin-bottom: 0.3em;
+}
+.header > div {
+    display: block;
+    float: none;
+}
+.header h1 {
+    font-family: "Old Standard TT", serif;
+    font-weight: 700;
+    font-size: 40pt;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin: 0;
+    line-height: 1em;
+    color: #2b1d0e;
+}
+.header h4 {
+    font-family: "IM Fell English", serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 10pt;
+    margin: 0.1em 0 0 0;
+    color: #5a4630;
+}
+.header .ear {
+    float: right;
+    max-width: 45%;
+}
+.left-ear {
+    display: none;
+}
+
+/* — TOC nav — */
+.toc-nav {
+    font-family: "Old Standard TT", serif;
+    font-size: 8pt !important;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border-top: 2px solid #8a7560 !important;
+    border-bottom: 2px solid #8a7560 !important;
+    padding: 0.15em 0 !important;
+    margin-bottom: 0.3em !important;
+    background: #f2e8d5;
+}
+.toc-nav a {
+    color: #2b1d0e !important;
+    text-decoration: none !important;
+    font-size: 8pt !important;
+}
+.toc-nav span {
+    color: #8a7560 !important;
+}
+
+/* — Banner (weather, above columns) — */
+.banner-section {
+    margin-bottom: 0.4em;
+    padding-bottom: 0.3em;
+    border-bottom: 1px solid #8a7560;
+}
+.banner-section article > h1 {
+    font-size: 12pt;
+    margin: 0;
+}
+.banner-section article > h4.byline {
+    display: none;
+}
+
+/* — Layout — */
+.row {
+    column-count: 2;
+    column-gap: 1.2em;
+    column-rule: 2px solid #8a7560;
+}
+
+/* — Articles — */
+.stories {
+    font-size: 11pt;
+    line-height: 1.35em;
+}
+
+article {
+    text-align: justify;
+    line-height: 1.35em;
+    break-inside: auto;
+}
+article.story {
+    margin-bottom: 0.6em;
+    padding-bottom: 0.4em;
+    border-bottom: 1px solid #8a7560;
+}
+
+article > h1 {
+    font-family: "Old Standard TT", serif;
+    font-weight: 700;
+    font-size: 17pt;
+    text-indent: 0;
+    margin-bottom: 0.1em;
+    margin-top: 0.15em;
+    line-height: 1.15em;
+    text-align: left;
+    color: #2b1d0e;
+}
+article > h1.priority-low {
+    font-family: "IM Fell English", serif;
+    font-size: 14pt;
+    font-weight: 400;
+    font-style: italic;
+    border-bottom: none;
+}
+
+article > h4.byline {
+    font-family: "IM Fell English", serif;
+    font-size: 9pt;
+    font-weight: 400;
+    font-style: italic;
+    text-indent: 0;
+    color: #5a4630;
+    border-bottom: none;
+    margin-bottom: 0.2em;
+}
+
+article > h3 {
+    font-family: "Old Standard TT", serif;
+    font-weight: 700;
+    font-size: 14pt;
+    text-indent: 0;
+}
+
+article p {
+    text-indent: 1.5em;
+    margin: 0 0 0.2em 0;
+}
+article p:first-of-type {
+    text-indent: 0;
+}
+/* Drop cap disabled — WeasyPrint floated ::first-letter
+   breaks in multi-column layout */
+
+/* — Images — */
+.stories article.story img {
+    width: 100%;
+    filter: sepia(60%) contrast(1.05) brightness(0.95);
+}
+
+figure {
+    border: 2px solid #8a7560;
+    text-indent: 0;
+    width: auto;
+    margin: 0.5em 0;
+    padding: 3px;
+}
+figure > span {
+    font-size: 0;
+}
+
+/* — Sidebar — */
+.sidebar {
+    font-size: 10pt;
+}
+
+/* — Section headers — */
+section > h1,
+section > h2,
+section > h3,
+section > h4,
+section > h5 {
+    border-left: 3px solid #5a4630;
+    padding-left: 0.5em;
+    font-family: "Old Standard TT", serif;
+}
+
+/* — Ear boxes — */
+.ear article {
+    border: 3px double #5a4630;
+    padding: 0.5em;
+    margin: 0.3em;
+    font-size: 9pt;
+    background: #ede4d1;
+}
+.ear article h1 {
+    font-family: "Old Standard TT", serif;
+    font-size: 9pt;
+    font-weight: 700;
+}
+
+ul, li, ol {
+    margin-left: 0;
+    padding-left: 0.3em;
+}
