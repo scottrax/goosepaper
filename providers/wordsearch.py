@@ -101,9 +101,9 @@ class WordSearchStoryProvider(StoryProvider):
 
     def _grid_to_html(self, grid: List[List[str]], theme: str, words: List[str]) -> str:
         cell_style = (
-            "width: 1.4em; height: 1.4em; text-align: center; "
-            "font-family: monospace; font-size: 12pt; font-weight: bold; "
-            "border: 1px solid #ccc; padding: 2px;"
+            "width: 6.66%; height: 2.1em; text-align: center; "
+            "font-family: monospace; font-size: 14pt; font-weight: bold; "
+            "border: 1px solid #666; padding: 0;"
         )
         rows_html = ""
         for row in grid:
@@ -115,11 +115,11 @@ class WordSearchStoryProvider(StoryProvider):
         word_bank = " &bull; ".join(sorted(words))
 
         return f"""
-        <div>
-            <table style="border-collapse: collapse; margin: 0 auto;">
+        <div style="min-height: 720pt; display: flex; flex-direction: column; justify-content: space-between;">
+            <table style="width: 100%; border-collapse: collapse; margin: 0 auto; table-layout: fixed;">
                 {rows_html}
             </table>
-            <p style="text-align: center; margin-top: 1em; font-size: 11pt;">
+            <p style="text-align: center; margin: 1em 0 0 0; font-size: 13pt;">
                 <strong>Find these words:</strong> {word_bank}
             </p>
         </div>

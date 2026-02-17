@@ -213,11 +213,11 @@ class CrosswordStoryProvider(StoryProvider):
                 used.add((r + dr * i, c + dc * i))
 
         # Build grid HTML
-        black_style = "background: black; width: 1.6em; height: 1.6em; border: 1px solid black;"
+        black_style = "background: black; width: 6.66%; height: 2.0em; border: 1px solid black;"
         cell_style = (
-            "width: 1.6em; height: 1.6em; border: 1px solid black; "
+            "width: 6.66%; height: 2.0em; border: 1px solid black; "
             "text-align: center; vertical-align: middle; position: relative; "
-            "font-family: monospace; font-size: 12pt;"
+            "font-family: monospace; font-size: 14pt;"
         )
 
         rows_html = ""
@@ -250,7 +250,7 @@ class CrosswordStoryProvider(StoryProvider):
         across_html = "".join(across_clues) if across_clues else "<li><em>None</em></li>"
         down_html = "".join(down_clues) if down_clues else "<li><em>None</em></li>"
         clues_html = f"""
-        <table style="width: 100%; margin-top: 1em; border-collapse: collapse; table-layout: fixed; font-size: 10pt;">
+        <table style="width: 100%; margin-top: 1em; border-collapse: collapse; table-layout: fixed; font-size: 11pt;">
             <tr>
                 <td style="width: 50%; vertical-align: top; padding-right: 0.6em;">
                     <h3 style="margin: 0 0 0.25em 0;">Across</h3>
@@ -265,8 +265,8 @@ class CrosswordStoryProvider(StoryProvider):
         """
 
         return f"""
-        <div>
-            <table style="border-collapse: collapse; margin: 0 auto;">
+        <div style="min-height: 720pt; display: flex; flex-direction: column; justify-content: space-between;">
+            <table style="width: 100%; border-collapse: collapse; margin: 0 auto; table-layout: fixed;">
                 {rows_html}
             </table>
             {clues_html}

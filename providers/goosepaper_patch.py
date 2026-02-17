@@ -135,6 +135,8 @@ class Goosepaper:
         main_html_parts = []
         sidebar_html_parts = []
         game_html_parts = []
+        comment_page_parts = []
+        seen_comment_anchors = set()
 
         for slug, info in sections.items():
             prov = info["prov"]
@@ -143,11 +145,12 @@ class Goosepaper:
                 anchor = f'<div id="{slug}"></div>'
                 game_story_html = []
                 for story in stories:
+                    story_html = story.to_html().replace('class="story"', 'class="story game-story"')
                     game_story_html.append(
                         (
                             '<div class="game-story-card" '
-                            'style="page-break-inside: avoid; break-inside: avoid-page;">'
-                            f"{story.to_html()}"
+                            'style="height: 100%; page-break-inside: avoid; break-inside: avoid-page;">'
+                            f"{story_html}"
                             "</div>"
                         )
                     )
@@ -155,7 +158,8 @@ class Goosepaper:
                     game_html_parts.append(
                         (
                             '<div class="game-provider-section" '
-                            'style="break-before: page; page-break-before: always;">'
+                            'style="break-before: page; page-break-before: always; '
+                            'min-height: 840pt; display: flex; flex-direction: column;">'
                             f"{anchor}{'<hr />'.join(game_story_html)}"
                             "</div>"
                         )
@@ -184,6 +188,33 @@ class Goosepaper:
                             f"{story_html}"
                             "</div>"
                         )
+                        comment_anchor = getattr(story, "_comments_anchor", "")
+                        comment_html = getattr(story, "_comments_html", "")
+                        comment_title = getattr(story, "_comments_title", story.headline or "Comments")
+                        comment_byline = getattr(story, "_comments_byline", "")
+                        comment_permalink = getattr(story, "_comments_permalink", "")
+                        if comment_anchor and comment_html and comment_anchor not in seen_comment_anchors:
+                            seen_comment_anchors.add(comment_anchor)
+                            source_link = ""
+                            if comment_permalink:
+                                source_link = (
+                                    '<p style="margin-top: 0.4em;">'
+                                    f'<a href="{comment_permalink}">Open on Reddit</a>'
+                                    "</p>"
+                                )
+                            comment_page_parts.append(
+                                (
+                                    '<div class="reddit-comments-page" '
+                                    'style="break-before: page; page-break-before: always; min-height: 840pt;">'
+                                    f'<div id="{comment_anchor}"></div>'
+                                    '<article class="story comments-story">'
+                                    f"<h1>Comments: {comment_title}</h1>"
+                                    f"<h4 class='byline'>{comment_byline}</h4>"
+                                    f"{comment_html}{source_link}"
+                                    "</article>"
+                                    "</div>"
+                                )
+                            )
                     wrapped_stories.append(story_html)
                 story_html = "<hr />".join(wrapped_stories)
                 main_html_parts.append(f"{anchor}{story_html}")
@@ -214,11 +245,48 @@ class Goosepaper:
                 "</div>"
             )
 
+        comments_block = ""
+        if comment_page_parts:
+            comments_block = (
+                '<div class="reddit-comments-book" '
+                'style="column-count: 1; column-gap: normal;">'
+                f"{''.join(comment_page_parts)}"
+                "</div>"
+            )
+
         return f"""
             <html>
             <head>
                 <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
                 <meta charset="UTF-8" />
+                <style>
+                    .games-section {{
+                        column-count: 1 !important;
+                        column-gap: normal !important;
+                    }}
+                    .games-section .game-provider-section {{
+                        page-break-inside: avoid !important;
+                        break-inside: avoid-page !important;
+                    }}
+                    .games-section article.game-story {{
+                        margin-bottom: 0 !important;
+                        padding-bottom: 0 !important;
+                        border-bottom: none !important;
+                    }}
+                    .games-section hr {{
+                        display: none !important;
+                    }}
+                    .reddit-comments-book {{
+                        column-count: 1 !important;
+                        column-gap: normal !important;
+                    }}
+                    .reddit-comments-page article.comments-story {{
+                        border-bottom: none !important;
+                    }}
+                    .reddit-comments-page .comment-item p {{
+                        text-indent: 0 !important;
+                    }}
+                </style>
             </head>
             <body>
                 <div class="header">
@@ -236,6 +304,7 @@ class Goosepaper:
                     </div>
                 </div>
                 {games_block}
+                {comments_block}
             </body>
             </html>
         """
